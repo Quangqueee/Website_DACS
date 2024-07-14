@@ -36,13 +36,16 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 MONGODB_URL=mongodb+srv://Borcelle_Store:quangsot@cluster0.xxcqiwn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 ```
-## Bước 4. Cài đặt Stripe để thực hiện thanh toán
+
+## Bước 4. Chạy website bằng lệnh
+```bash
+npm run dev
+```
+
+## Bước 5. Cài đặt Stripe để thực hiện thanh toán
 ```bash
 cd 'đến thư mục chứa file cài đặt Stripe.exe'
 stripe listen --forward-to localhost:3000/api/webhooks
 ```
 
-## Bước 5. Chạy website bằng lệnh
-```bash
-npm run dev
-```
+

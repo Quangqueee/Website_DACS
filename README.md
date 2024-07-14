@@ -4,7 +4,7 @@
 
 ## Yêu Cầu
 
-Đảm bảo rằng bạn đã cài đặt các phần mềm sau trên máy tính của mình:
+Đảm bảo đã cài đặt các phần mềm sau trên máy tính của mình:
 - Node.js
 - npm (Trình quản lý gói Node)
 

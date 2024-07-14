@@ -14,7 +14,6 @@
 
 ```bash
 git clone https://github.com/Quangqueee/Website_DACS.git
-cd AdminDACS
 ```
 ## Bước 2 Cài đặt các Package
 ```bash

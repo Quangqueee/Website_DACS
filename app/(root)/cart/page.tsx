@@ -15,6 +15,11 @@ const Cart = () => {
     (acc, cartItem) => acc + cartItem.item.price * cartItem.quantity,
     0
   );
+
+  const totalFormatted = total.toLocaleString("vi-VN", {
+    minimumFractionDigits: 0,
+  });
+
   const totalRounded = parseFloat(total.toFixed(2));
 
   // Tính tổng số lượng sản phẩm
@@ -29,7 +34,7 @@ const Cart = () => {
     name: user?.fullName,
   };
 
-  console.log(user)
+  console.log(user);
 
   const handleCheckout = async () => {
     try {
@@ -79,20 +84,28 @@ const Cart = () => {
                     {cartItem.size && (
                       <p className="text-small-medium">{cartItem.size}</p>
                     )}
-                    <p className="text-small-medium">${cartItem.item.price}</p>
+                    <p className="text-small-medium">
+                      {cartItem.item.price.toLocaleString("vi-VN", {
+                        minimumFractionDigits: 0,
+                      })}đ
+                    </p>
                   </div>
                 </div>
 
                 <div className="col-span-3 flex justify-center items-center gap-2">
                   <MinusCircle
-                    className="hover:text-red-1 cursor-pointer"
-                    onClick={() => cart.decreaseQuantity(cartItem.item._id)}
+                    className="hover:text-gray-400 cursor-pointer"
+                    onClick={() =>
+                      cartItem.quantity > 1 &&
+                      cart.decreaseQuantity(cartItem.item._id)
+                    }
                   />
+
                   <p className="text-body-bold w-8 text-center">
                     {cartItem.quantity}
                   </p>
                   <PlusCircle
-                    className="hover:text-red-1 cursor-pointer"
+                    className="hover:text-gray-400 cursor-pointer"
                     onClick={() => cart.increaseQuantity(cartItem.item._id)}
                   />
                 </div>
@@ -118,7 +131,7 @@ const Cart = () => {
         </p>
         <div className="flex justify-between text-body-semibold">
           <span>Tổng tiền:</span>
-          <span>$ {totalRounded}</span>
+          <span>{totalFormatted} đ</span>
         </div>
         <button
           className="border rounded-lg text-body-bold bg-white py-3 w-full hover:bg-black hover:text-white"

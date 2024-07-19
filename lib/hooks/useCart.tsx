@@ -30,18 +30,18 @@ const useCart = create(
         );
 
         if (isExisting) {
-          return toast("Item already in cart");
+          return toast("Sản phẩm đã có trong giỏ hàng");
         }
 
         set({ cartItems: [...currentItems, { item, quantity, color, size }] });
-        toast.success("Item added to cart", { icon: "🛒" });
+        toast.success("Sản phẫm đã được thêm vào giỏ hàng", { icon: "🛒" });
       },
       removeItem: (idToRemove: String) => {
         const newCartItems = get().cartItems.filter(
           (cartItem) => cartItem.item._id !== idToRemove
         );
         set({ cartItems: newCartItems });
-        toast.success("Item removed from cart");
+        toast.success("Đã xoá sản phẩm khỏi giỏ hàng");
       },
       increaseQuantity: (idToIncrease: String) => {
         const newCartItems = get().cartItems.map((cartItem) =>
@@ -50,7 +50,7 @@ const useCart = create(
             : cartItem
         );
         set({ cartItems: newCartItems });
-        toast.success("Item quantity increased");
+        // toast.success("Item quantity increased");
       },
       decreaseQuantity: (idToDecrease: String) => {
         const newCartItems = get().cartItems.map((cartItem) =>
@@ -59,7 +59,7 @@ const useCart = create(
             : cartItem
         );
         set({ cartItems: newCartItems });
-        toast.success("Item quantity decreased");
+        // toast.success("Item quantity decreased");
       },
       clearCart: () => set({ cartItems: [] }),
     }),

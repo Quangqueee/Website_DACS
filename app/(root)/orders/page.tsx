@@ -9,6 +9,14 @@ const Orders = async () => {
 
   console.log(orders[0].products);
 
+  const formatCurrency = (value: number) => {
+    return value
+      .toLocaleString("vi-VN", {
+        minimumFractionDigits: 0,
+      })
+      .replace(/,/g, ".");
+  };
+
   return (
     <div className="px-10 py-5 max-sm:px-3">
       <p className="text-heading3-bold my-10">Đơn hàng của bạn</p>
@@ -23,7 +31,7 @@ const Orders = async () => {
             <div className="flex gap-20 max-md:flex-col max-md:gap-3">
               <p className="text-base-bold">Mã đơn hàng: {order._id}</p>
               <p className="text-base-bold">
-                Tổng tiền: {order.totalAmount} vnđ
+                Tổng tiền: {formatCurrency(order.totalAmount)} đ
               </p>
             </div>
 
@@ -61,12 +69,16 @@ const Orders = async () => {
                       </p>
                     )}
                     <p className="text-small-medium">
-                      Giá tiền:{" "} 
-                      <span className="text-small-bold">{orderItem.product.price}</span>
+                      Giá tiền:{" "}
+                      <span className="text-small-bold">
+                        {formatCurrency(orderItem.product.price)} đ
+                      </span>
                     </p>
                     <p className="text-small-medium">
                       Số lượng:{" "}
-                      <span className="text-small-bold">{orderItem.quantity}</span>
+                      <span className="text-small-bold">
+                        {orderItem.quantity}
+                      </span>
                     </p>
                   </div>
                 </div>

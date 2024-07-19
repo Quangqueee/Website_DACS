@@ -17,6 +17,8 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
 
   const cart = useCart();
 
+  const formattedPrice = productInfo.price.toLocaleString('vi-VN', { minimumFractionDigits: 0 });
+
   //! Sua
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -37,7 +39,7 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
         <p className="text-base-bold">{productInfo.category}</p>
       </div>
 
-      <p className="text-heading3-bold">$ {productInfo.price}</p>
+      <p className="text-heading3-bold">{formattedPrice}đ</p>
 
       <div className="flex flex-col gap-2">
         <p className="text-base-medium text-grey-2">Mô tả:</p>
@@ -88,7 +90,7 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
         <p className="text-base-medium text-grey-2">Số lượng:</p>
         <div className="flex gap-4 items-center select-none">
           <MinusCircle
-            className="hover:text-red-1 cursor-pointer"
+            className="hover:text-gray-400 cursor-pointer"
             onClick={() => quantity > 1 && setQuantity(quantity - 1)}
           />
           <input
@@ -98,7 +100,7 @@ const ProductInfo = ({ productInfo }: { productInfo: ProductType }) => {
             className="text-body-bold w-12 text-center border-none bg-transparent outline-none"
           />
           <PlusCircle
-            className="hover:text-red-1 cursor-pointer"
+            className="hover:text-gray-400 cursor-pointer"
             onClick={() => setQuantity(quantity + 1)}
           />
         </div>

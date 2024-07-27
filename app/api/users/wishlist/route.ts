@@ -20,13 +20,13 @@ export const POST = async (req: NextRequest) => {
     if (!user) {
       return new NextResponse("User not found", { status: 404 })
     }
-
+    // Lay productId
     const { productId } = await req.json()
 
     if (!productId) {
       return new NextResponse("Product Id required", { status: 400 })
     }
-
+    // Kiem tra san pham da co trong ds yt cua nguoi dung chua
     const isLiked = user.wishlist.includes(productId)
 
     if (isLiked) {
